@@ -1,0 +1,9 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Use normal CSS instead of @apply */
+body {
+  background-color: black;
+  color: white;
+}
