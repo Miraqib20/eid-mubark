@@ -3,7 +3,13 @@ import { useState, useEffect } from "react";
 export default function Home() {
   const [show, setShow] = useState(false);
   const [name, setName] = useState("");
-  const [copied, setCopied] = useState(false);
+  const [typedText, setTypedText] = useState("");
+
+  const fullText = `🌙 On this blessed occasion of Eid, may Allah fill your life with endless happiness, peace, and success.
+May your heart be illuminated with faith and your home with love and laughter.
+As the crescent moon shines, may it bring new hopes, fresh beginnings, and countless blessings into your life.
+May all your prayers be accepted and your dreams come true.
+Wishing you and your family a joyful and prosperous Eid. ✨ Ameen 🙌`;
 
   // Get name from URL
   useEffect(() => {
@@ -14,6 +20,20 @@ export default function Home() {
       setShow(true);
     }
   }, []);
+
+  // Typing animation
+  useEffect(() => {
+    if (!show) return;
+
+    let i = 0;
+    const interval = setInterval(() => {
+      setTypedText(fullText.substring(0, i));
+      i++;
+      if (i > fullText.length) clearInterval(interval);
+    }, 25);
+
+    return () => clearInterval(interval);
+  }, [show]);
 
   // Fireworks
   useEffect(() => {
@@ -70,16 +90,6 @@ export default function Home() {
     return () => clearInterval(interval);
   }, [show]);
 
-  // Share link
-  const shareLink = `${window.location.origin}/?name=${name}`;
-
-  // Copy function
-  const handleCopy = () => {
-    navigator.clipboard.writeText(shareLink);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
-  };
-
   return (
     <div className="min-h-screen flex flex-col justify-between text-center bg-black text-white px-4 relative overflow-hidden font-[Poppins]">
 
@@ -104,9 +114,9 @@ export default function Home() {
       </div>
 
       {/* Moon */}
-      <div className="absolute top-10 right-10 w-28 h-28 bg-yellow-300 rounded-full shadow-[0_0_80px_30px_rgba(255,255,0,0.6)] z-0"></div>
+      <div className="absolute top-10 right-10 w-28 h-28 bg-yellow-300 rounded-full shadow-[0_0_80px_30px_rgba(255,255,0,0.6)] z-0 animate-pulse"></div>
 
-      {/* MAIN CONTENT */}
+      {/* MAIN */}
       <div className="flex flex-col items-center justify-center flex-1 z-10">
 
         {!show ? (
@@ -115,7 +125,6 @@ export default function Home() {
               🌙 Eid Mubarak
             </h1>
 
-            {/* Input */}
             <input
               type="text"
               placeholder="Enter your name..."
@@ -132,24 +141,22 @@ export default function Home() {
             </button>
           </>
         ) : (
-          <div className="max-w-3xl animate-fadeIn">
+          <div className="max-w-3xl transition-all duration-700 ease-in-out">
 
             {/* Heading */}
-            <h1 className="text-5xl md:text-7xl font-extrabold text-yellow-400 mb-6">
+            <h1 className="text-5xl md:text-7xl font-extrabold text-yellow-400 mb-6 animate-bounce">
               🌙 Eid Mubarak {name || "Dear Friend"}
             </h1>
 
-            {/* Wish */}
-            <p className="text-2xl md:text-4xl leading-relaxed mb-6">
-              🌙 On this blessed occasion of Eid, may Allah fill your life with endless happiness, peace, and success.<br />
-              May your heart be illuminated with faith and your home with love and laughter. <br /> 
-              As the crescent moon shines, may it bring new hopes, fresh beginnings, and countless blessings into your life.<br />
-              May all your prayers be accepted and your dreams come true. Wishing you and your family a joyful and prosperous Eid.✨ Ameen 🙌
+            {/* Typing Wish */}
+            <p className="text-2xl md:text-4xl leading-relaxed mb-6 whitespace-pre-line">
+              {typedText}
+              <span className="animate-pulse">|</span>
             </p>
 
             {/* Eid Line */}
-            <p className="text-2xl md:text-4xl text-yellow-300 font-semibold mb-6">
-              🌙 Eid Mubarak to You and Your Family from the Core of My Heart ❤️
+            <p className="text-2xl md:text-4xl text-yellow-300 font-semibold mb-6 animate-fadeIn">
+              🌙 Eid Mubarak to You and Your Family ❤️
             </p>
 
             {/* Background Text */}
@@ -160,28 +167,6 @@ export default function Home() {
           </div>
         )}
       </div>
-
-      {/* 🔗 SHARE LINK AT BOTTOM */}
-      {show && (
-        <div className="z-10 px-4 mb-4">
-          <div className="bg-white/10 p-4 rounded-xl max-w-xl mx-auto">
-            <p className="text-sm mb-2">Share this link:</p>
-
-            <input
-              value={shareLink}
-              readOnly
-              className="w-full p-2 text-black rounded mb-2"
-            />
-
-            <button
-              onClick={handleCopy}
-              className="bg-yellow-400 text-black px-4 py-2 rounded"
-            >
-              {copied ? "Copied ✅" : "Copy Link"}
-            </button>
-          </div>
-        </div>
-      )}
 
       {/* FOOTER */}
       <div className="pb-4 z-10">
