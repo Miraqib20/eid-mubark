@@ -141,6 +141,7 @@ export default function Home() {
 
             {/* Wish */}
             <p className="text-2xl md:text-4xl leading-relaxed mb-6">
+              🌙 May this Eid bring endless joy, peace, and prosperity into your life. May Allah accept your prayers and bless you with happiness always<br />
               ✨ Chand ki roshni se roshan ho aapka har din, <br />
               💖 Khushiyon se bhari ho aapki zindagi har pal, <br />
               🌙 Allah aapko har dukh se mehfooz rakhe, <br />
