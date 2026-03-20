@@ -141,11 +141,10 @@ export default function Home() {
 
             {/* Wish */}
             <p className="text-2xl md:text-4xl leading-relaxed mb-6">
-              🌙 May this Eid bring endless joy, peace, and prosperity into your life. May Allah accept your prayers and bless you with happiness always<br />
-              ✨ Chand ki roshni se roshan ho aapka har din, <br />
-              💖 Khushiyon se bhari ho aapki zindagi har pal, <br />
-              🌙 Allah aapko har dukh se mehfooz rakhe, <br />
-              🤲 Aur har dua qabool farmaye… Ameen 🙌
+              🌙 On this blessed occasion of Eid, may Allah fill your life with endless happiness, peace, and success.<br />
+              May your heart be illuminated with faith and your home with love and laughter. <br /> 
+              As the crescent moon shines, may it bring new hopes, fresh beginnings, and countless blessings into your life.<br />
+              May all your prayers be accepted and your dreams come true. Wishing you and your family a joyful and prosperous Eid.✨ Ameen 🙌
             </p>
 
             {/* Eid Line */}
