@@ -137,7 +137,7 @@ Wishing you and your family a joyful and prosperous Eid. ✨ Ameen 🙌`;
               onClick={() => setShow(true)}
               className="bg-yellow-400 text-black px-6 py-3 rounded-full text-lg font-semibold hover:scale-110 transition"
             >
-              Enter your name to receive a special Eid message 🌙✨
+              Press Here to see 🌙✨
             </button>
           </>
         ) : (
